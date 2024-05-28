@@ -1,5 +1,5 @@
 //
-// Created by è¦ƒç«‹ä¸­ on 2022/7/14.
+// Created by ñûÁ¢ÖĞ on 2022/7/14.
 //
 
 #include <stdio.h>
@@ -12,19 +12,19 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <string.h>
-#define PORT 8888 //å®šä¹‰é€šä¿¡ç«¯å£
-#define BACKLOG 5 //å®šä¹‰ä¾¦å¬é˜Ÿåˆ—é•¿åº¦
+#define PORT 8888 //¶¨ÒåÍ¨ĞÅ¶Ë¿Ú
+#define BACKLOG 5 //¶¨ÒåÕìÌı¶ÓÁĞ³¤¶È
 #define buflen 1024
 int listenfd,connfd;
 int main(int argc,char *argv[])
 {
-    struct sockaddr_in server_addr; //å­˜å‚¨æœåŠ¡å™¨ç«¯socketåœ°å€ç»“æ„
-    struct sockaddr_in client_addr; //å­˜å‚¨å®¢æˆ·ç«¯ socketåœ°å€ç»“æ„
+    struct sockaddr_in server_addr; //´æ´¢·şÎñÆ÷¶ËsocketµØÖ·½á¹¹
+    struct sockaddr_in client_addr; //´æ´¢¿Í»§¶Ë socketµØÖ·½á¹¹
     pid_t pid;
     listenfd = socket(AF_INET,SOCK_STREAM,0);
     memset(&server_addr,0,sizeof(server_addr));
-    server_addr.sin_family = AF_INET; //åè®®æ—
-    server_addr.sin_addr.s_addr = htonl(INADDR_ANY); //æœ¬åœ°åœ°å€
+    server_addr.sin_family = AF_INET; //Ğ­Òé×å
+    server_addr.sin_addr.s_addr = htonl(INADDR_ANY); //±¾µØµØÖ·
     server_addr.sin_port = htons(PORT);
     bind(listenfd,(struct sockaddr *)&server_addr,sizeof(server_addr));
     listen(listenfd,BACKLOG);
@@ -38,7 +38,7 @@ int main(int argc,char *argv[])
         if((pid = fork()) == 0)
         {
             close(listenfd);
-            sleep(1000);//å­è¿›ç¨‹ä¸æ¥æ”¶æ•°æ®ï¼Œsleep 1000ç§’
+            sleep(1000);//×Ó½ø³Ì²»½ÓÊÕÊı¾İ£¬sleep 1000Ãë
             exit(0);
         }
         else
